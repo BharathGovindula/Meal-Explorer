@@ -2,6 +2,9 @@
 
 A responsive web application that fetches food and recipe data from the MealDB API. This application allows users to search, filter, and sort meals from TheMealDB database.
 
+## Deployed Link - https://mealexplorerr.netlify.app/
+
+
 ## Features
 
 - **Responsive Design**: Works smoothly on desktop, tablet, and mobile devices
@@ -18,6 +21,10 @@ A responsive web application that fetches food and recipe data from the MealDB A
   - Visual page number indicators
 - **Loading Animation**: 
   - Displays a loader while fetching data from the API
+
+<img width="1920" height="1080" alt="Screenshot (2130)" src="https://github.com/user-attachments/assets/9a456236-8553-456e-8738-5a11798167a9" />
+
+
 
 ## Technologies Used
 

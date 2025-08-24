@@ -27,10 +27,10 @@ async function initApp() {
     await fetchCategories();
     
     // Fetch initial meals (using a popular category to start)
-    await fetchMealsByCategory('Beef');
+    await fetchMealsByCategory('chicken');
     
     // Hide loader after initial data is loaded
-    hideLoader();
+    hideLoader();   
     
     // Set up event listeners
     setupEventListeners();

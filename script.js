@@ -76,7 +76,9 @@ async function fetchMealsByCategory(category) {
             allMeals = detailedMeals.filter(meal => meal !== null);
             filteredMeals = [...allMeals];
             
-            sortMeals();
+            // Apply current sort option
+            const currentSortOption = sortBy.value;
+            sortMeals(currentSortOption);
             renderMeals();
         }
     } catch (error) {
@@ -165,8 +167,8 @@ function filterMeals() {
 }
 
 // Sort meals based on selected option
-function sortMeals() {
-    const sortOption = sortBy.value;
+function sortMeals(sortOptionParam) {
+    const sortOption = sortOptionParam || sortBy.value;
     
     filteredMeals.sort((a, b) => {
         if (sortOption === 'name') {
@@ -334,7 +336,15 @@ function setupEventListeners() {
             await fetchMealsByCategory(selectedCategory);
             hideLoader();
         } else {
-            filterMeals();
+            // For "All Categories" option, show all meals from all categories
+            showLoader();
+            // Fetch meals from a popular category to start
+            await fetchMealsByCategory('Chicken');
+            // Reset the filter to show all meals
+            filteredMeals = [...allMeals];
+            sortMeals();
+            renderMeals();
+            hideLoader();
         }
     });
     

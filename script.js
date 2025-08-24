@@ -27,7 +27,7 @@ async function initApp() {
     await fetchCategories();
     
     // Fetch initial meals (using a popular category to start)
-    await fetchMealsByCategory('chicken');
+    await fetchMealsByCategory('Chicken');
     
     // Hide loader after initial data is loaded
     hideLoader();   
@@ -326,7 +326,17 @@ function setupEventListeners() {
     });
     
     // Category filter change
-    categoryFilter.addEventListener('change', filterMeals);
+    categoryFilter.addEventListener('change', async (e) => {
+        const selectedCategory = e.target.value;
+        
+        if (selectedCategory) {
+            showLoader();
+            await fetchMealsByCategory(selectedCategory);
+            hideLoader();
+        } else {
+            filterMeals();
+        }
+    });
     
     // Sort option change
     sortBy.addEventListener('change', () => {
